@@ -1,0 +1,744 @@
+<html><head><title>6주차</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body class="pdf ko-KR" lang="ko-KR"><article id="334924f6-8abb-8044-a14e-da2b38921a43" class="page sans"><header><h1 class="page-title" dir="auto">6주차</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80ad-96ee-edf308bb454d"><div class="source"><a href="https://www.notion.so/signed/attachment%3A2bbf519f-b1dd-4cf8-afe9-de958250ac50%3A%EB%94%A5%EB%9F%AC%EB%8B%9D_%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98_%EA%B5%90%EA%B3%BC%EC%84%9C_17%EC%9E%A5.pdf?table=block&amp;id=340924f6-8abb-80ad-96ee-edf308bb454d&amp;spaceId=df75b261-8887-4f5d-af69-bf4f5296a6fb&amp;userId=753b29c0-0b28-4729-bb40-797c6a3afad3&amp;cache=v2">딥러닝 파이토치 교과서 1~7장.pdf</a></div></figure></div><div style="display:contents" dir="auto"><h1 id="334924f6-8abb-806f-8aad-e101d1d855c3" class=""><strong>[딥러닝 파이토치 교과서] 6장</strong></h1></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-80a7-8f95-cf626a6a9e5a" class="">6.1.1 ResNet</h2></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-807c-88b3-c4760efdf433" class="bulleted-list"><li style="list-style-type:disc">MS에서 개발한 알고리즘</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8002-aff4-f809af79997c" class="bulleted-list"><li style="list-style-type:disc">핵심: 깊어진 신경망을 효과적으로 학습하기 위한 방법으로 <mark class="highlight-yellow_background">residual</mark> 고안</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80bd-9dd4-e381d11f1ba1" class="bulleted-list"><li style="list-style-type:disc">Deep Residual Learning for Image Recognition 논문에 따르면, 신경망은 깊어질수록 성능이 좋아지다가, <mark class="highlight-red_background">일정 단계에 도달하면 성능이 나빠진다! </mark><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-808d-b3f2-d4141bd8ba3c" class="image"><img style="width:703.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/a471c14c-3689-4166-80cc-90e21450b3bb/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=61c559d97401bdbe1eaa0720b2c095b09ed44ff21425b99414e78aaa9bd67f9f&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80af-aa55-e4c928245464" class="bulleted-list"><li style="list-style-type:disc">residual block: 기울기가 잘 전파될 수 있도록 shortcut(skip connection)을 만들어줌<div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8060-ac9b-dfeee82fa008" class="image"><img style="width:665.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/9415b44f-e01a-4439-9163-dea35a7e2a45/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=fddbf79c8ef4aa5c1c4a4ad8dea7389877eb1b7cd186faebafc868b5c552a034&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ul></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8029-a1c8-ea5c0deeb08e" class="image"><img style="width:703.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/5eaa1986-ae2b-4209-a3f1-9c50dabb3b01/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=aa403323589cf18a0e9cdcf385a91df37240ff2859e12a0a50956f797b00bdfe&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80e8-963d-ff8fb40949a3" class="bulleted-list"><li style="list-style-type:disc">residual block: 합성곱층을 하나의 블록으로 묶은 것</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80f1-ba33-fd48c56537c5" class="bulleted-list"><li style="list-style-type:disc">ResNet: residual block을 여러 개 쌓은 것</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80b4-948f-c112f540bab2" class="bulleted-list"><li style="list-style-type:disc">기본 블록 vs 병목 블록<div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80eb-81bc-ff0dfdf3f26f" class="image"><img style="width:665.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/383cf394-f0f9-457e-97f7-2e5392a41c57/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=f9fafb253aa3fd075fe2a3e8a3e0dfaee819275c3cd3716f5416a9d7c0c18071&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80fb-a78c-c2211427917c" class="bulleted-list"><li style="list-style-type:circle">병목블록(bottleneck block): 파라미터 수가 계속 증가하는 것을 막음<div style="display:contents" dir="auto"><p id="340924f6-8abb-8052-8283-d674157a9149" class="">합성곱층의 채널 수를 조절하면서, 차원을 줄였다가 늘릴 수 있기 때문</p></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8001-9849-fc0d9dfc6614" class="bulleted-list"><li style="list-style-type:disc">identity mapping(shortcut, skip connection)<div style="display:contents" dir="auto"><p id="340924f6-8abb-80c5-b6d5-f359641d80c6" class="">입력 <style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span>가 어떤 함수를 통과하더라도, 다시 <style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex"> x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span>라는 형태로 출력되도록 함</p></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80c3-bdd0-d31950d7f2d1" class="image"><img style="width:665.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/abc86c86-4519-4e21-b882-9714643cc4ae/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=18a86c184a07581422b207527f87f2d0bb89ff1d8a4b2ff8d63d83d5fbaf05e0&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8037-98a2-cf076740122b" class="bulleted-list"><li style="list-style-type:disc">downsample: feature map크기를 줄이기 위한 것. pooling과 같은 역할 </li></ul></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8090-b61d-f0caa425a6a8" class="image"><img style="width:585.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/5aa28c53-54c0-43ea-b277-190b1a270951/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=5470b008aa9299013d41a547c844cc094d420766a8ed691538a0c342877ccc49&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8054-a609-e87724384efe" class="bulleted-list"><li style="list-style-type:disc">합성곱 블록(projection shortcut)<div style="display:contents" dir="auto"><p id="340924f6-8abb-8022-8768-cedc2b95fd27" class="">입력, 출력 차원이 동일하지 않음⇒ 입력 차원에 맞게 변경해야함</p></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8060-b04f-f9c3d9fce12d" class="image"><img style="width:665.9812622070312px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/5d57b38b-6a85-46a4-84f8-e5b6f7b05a1d/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=4b2576428e6d70d2be8b257afc28ee9f278f7a678aad847cc508aceed7507b3a&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80f8-97e1-ceee37407fe4" class="bulleted-list"><li style="list-style-type:disc">아이덴티티 블록<div style="display:contents" dir="auto"><p id="340924f6-8abb-80f9-b390-dcc7cb0f6d73" class="">입력과 출력의 차원이 동일<div class="indented"><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8091-88df-caf48ba5f7d5" class="image"><img style="width:629.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/d4593a20-e0ae-4f0c-88a6-37f891edb3b5/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=b2819e7feb2b8fda3abffd530ffee1f21ef245d899d3e138199c4455953a621c&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8081-9060-fe3502e08939" class="bulleted-list"><li style="list-style-type:disc">VGG19 vs ResNet<div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80c3-bad9-faf58c09e938" class="image"><img style="width:664.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/3d7eca34-f273-4fe0-ae8c-dfebd11bef1f/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=bba9ae9467900a4a30241d8653e478dd384ab3c19534aa50e519eb44e329629c&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-805f-8da9-e1c6405871aa" class="">실습</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80f1-bfa0-f2544415b448" class="bulleted-list"><li style="list-style-type:disc">기본 블록 → 병목 블록: 계층을 더 깊게 쌓으면서 계산에 대한 비용 줄일 수 있음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-800a-8824-c181e6775d27" class="bulleted-list"><li style="list-style-type:disc">계층이 증가한다 = 활성화 함수가 더 많이 포함된다 ⇒ non-linearity 처리 가능 (다양한 입력에 대한 처리 가능)</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80a1-9590-db33b78c88fa" class="bulleted-list"><li style="list-style-type:disc">레지듀얼 분기: 프로그램에서 조건에 따라 A, B, C 등으로 분기하는 것  </li></ul></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80cd-87ea-c58f73b7e273" class="image"><img style="width:319.9937438964844px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/c116ed29-17a6-43cc-9182-582e30c61329/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=4a799e128a24c46e24803f15c4d9dcaec6b9df2dbcfa0ad7504b8cb08e17e145&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-808c-9bfd-ea0bc37d2575" class="bulleted-list"><li style="list-style-type:disc"><code>tensor.topk</code><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8006-bb2e-ea91b72ed178" class="bulleted-list"><li style="list-style-type:circle">주어진 텐서에서 가장 큰 값의 인덱스를 얻기 위해 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80d5-a779-d972677da832" class="bulleted-list"><li style="list-style-type:circle"><code>torch.argmax</code> 와 같은 역할</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8042-b0a9-e8251cf77d1e" class="bulleted-list"><li style="list-style-type:circle">네트워크의 출력에서 가장 확률이 높은 인덱스 값을 리턴함</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80e1-91a7-c158b170b076" class="bulleted-list"><li style="list-style-type:disc"> <code>t()</code> : tranpose</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80a3-92f9-f27df979ce84" class="bulleted-list"><li style="list-style-type:disc">텐서 비교 함수<div style="display:contents" dir="auto"><ul id="340924f6-8abb-80c1-83f8-c89629b83ff0" class="bulleted-list"><li style="list-style-type:circle"><code>torch.eq</code> : 텐서가 서로 같은지 비교</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8013-91b0-f9d3199f7efd" class="bulleted-list"><li style="list-style-type:circle"><code>torch.ne</code> : 텐서가 서로 다른지 비교</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80a6-92a1-e5920787c6aa" class="bulleted-list"><li style="list-style-type:circle"><code>torch.ge</code> : 크거나 같은지 비교</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="340924f6-8abb-8009-90dc-c0ace9bfb241" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8059-9e9d-d92ea9d0a6c7" class="">컴퓨터 비전 분야에서 핵심</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80ab-8602-e9cbe6d25d32" class="bulleted-list"><li style="list-style-type:disc">모델을 학습하기 위한 데이터</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80c1-a67f-cbc3609905e7" class="bulleted-list"><li style="list-style-type:disc">신경망은 이미 구현된 모델을 재사용 할 수 있는 것이 많음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80e2-b71c-f0fc82c5194c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">내가 가진 데이터에 가장 적합한 모델을 선택하는 것이 가장 중요함! </mark></li></ul></div><div style="display:contents" dir="auto"><h1 id="340924f6-8abb-80a8-a08a-c1347f6ed73c" class="">6.2 객체 인식을 위한 신경망</h1></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80f2-92ad-f99f2591046d" class="bulleted-list"><li style="list-style-type:disc">객체 인식: 이미지, 영상 안에 있는 객체를 식별하는 컴퓨터 비전 기술<div style="display:contents" dir="auto"><ul id="340924f6-8abb-80a2-a973-fdaba316433a" class="bulleted-list"><li style="list-style-type:circle">분류 문제: 이미지, 영상 안에 있는 여러 객체에 대해 각 객체가 무엇인지 분류</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8093-b01b-ecc5664f1f00" class="bulleted-list"><li style="list-style-type:circle">위치 검출 문제 (localization): 객체 위치가 어디인지 bounding box로 나타냄 </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8027-a70b-fdec20217c2b" class="bulleted-list"><li style="list-style-type:disc">단계<div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8088-8ad8-cecafdbf8031" class="image"><img style="width:647.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/c3ae4518-8800-4404-baba-d51f0825f712/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=12134dae6942fe46572dd7e4bed56c3bed51e8916495a98b8736d64a0ca39b59&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-80bc-aba8-dbff92c36571" class="numbered-list" start="1"><li>1-stage detector<div style="display:contents" dir="auto"><ul id="340924f6-8abb-803f-b611-e9989582fbb5" class="bulleted-list"><li style="list-style-type:disc">분류, 위치 검출을 동시에 함</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-801f-81a3-e91778a34a8b" class="bulleted-list"><li style="list-style-type:disc">속도 빠름</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8026-a141-c6971b01cf3d" class="bulleted-list"><li style="list-style-type:disc">정확도 낮음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8040-b548-fa242683c339" class="bulleted-list"><li style="list-style-type:disc">YOLO, SSD 계열</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-8025-b490-d89cb6999388" class="numbered-list" start="2"><li>2-stage detector<div style="display:contents" dir="auto"><ul id="340924f6-8abb-8090-9ebe-f20aa65e6a44" class="bulleted-list"><li style="list-style-type:disc">분류, 위치 검출을 순차적으로 진행함</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8062-9eb3-daaf81f46b58" class="bulleted-list"><li style="list-style-type:disc">속도 느림</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8049-82b2-e5427b2ab40e" class="bulleted-list"><li style="list-style-type:disc">정확도 높음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80de-88cc-c3a3df4bd9bd" class="bulleted-list"><li style="list-style-type:disc">R-CNN 계열</li></ul></div></li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-800d-b30e-ee7024a4a427" class="bulleted-list"><li style="list-style-type:disc">활용 분야: 자율 주행 자동차, CCTV, 무인 점포</li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-8092-b01e-dc92060c2985" class="">6.2.1 R-CNN</h2></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8073-b964-e6de810eac00" class="">과거의 객체 인식 알고리즘</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80c3-ab83-f538975061ac" class="bulleted-list"><li style="list-style-type:disc">슬라이딩 윈도우 방식: 일정한 크기를 가진 window로 이미지의 모든 영역을 탐색하면서 객체 검출</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8047-b985-e0aba44e33c5" class="bulleted-list"><li style="list-style-type:disc">단점: 비효율적</li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-80fc-9a89-c4e4431828bf" class="">현재</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80ec-9804-f1ae52c5e13d" class="bulleted-list"><li style="list-style-type:disc">선택적 탐색(selective search) 알고리즘을 적용한 후보 영역 알고리즘(region proposal) 많이 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-808d-8442-e951b4ee48ae" class="bulleted-list"><li style="list-style-type:disc">region proposal: 영상, 이미지에서 객체가 있을 법한 영역</li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8026-9171-d1160793878b" class="">선택적 탐색</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80b8-a9d3-faaa158e862e" class="bulleted-list"><li style="list-style-type:disc">객체 인식, 검출을 위한 가능한 후보 영역을 알아내는방법</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80df-a838-f40de1615359" class="bulleted-list"><li style="list-style-type:disc">분할 방식 → seed 선정 → seed에 대해 완전 탐색 적용 </li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8089-8783-d3a093ee626e" class="bulleted-list"><li style="list-style-type:disc">용어<div style="display:contents" dir="auto"><ul id="340924f6-8abb-80cc-9346-c0cf2c3f00c5" class="bulleted-list"><li style="list-style-type:circle">완전 탐색(exhaustive search): 후보가 될만한 대상의 크기, 비율이 모두 다른 상황을 고려해 후보 영역을 찾는 방법</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-809f-bf66-e61e089c0d97" class="bulleted-list"><li style="list-style-type:circle">분할(segmentation): 영상 데이터의 특성에 따라 분할 → 후보 영역 선정</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8070-be09-d5141ecd8876" class="bulleted-list"><li style="list-style-type:circle">후보영역(bounding box): 3D 객체의 형태를 모두 포함할 수 있는 최소 크기의 박스</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-802e-ae13-c20d5ad0333a" class="bulleted-list"><li style="list-style-type:circle">seed: 특정 기준점이 되는 픽셀<div style="display:contents" dir="auto"><p id="340924f6-8abb-805d-b65d-c8849b64538b" class="">영상에서는 특정 기준점의 픽셀에서 점점 의미가 같은 영상 범위까지 픽셀을 확장하면서 분할함</p></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8079-8d1b-e5550be759fb" class="bulleted-list"><li style="list-style-type:disc">단계<div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-803b-a8e8-c1d811d0095a" class="numbered-list" start="1"><li>초기 영역 생성 (sub-segmentation)<div style="display:contents" dir="auto"><p id="340924f6-8abb-8018-a548-e6184bd071b1" class="">입력된 이미지를 여러 영역으로 분할</p></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-805f-9252-ecd3d5f608c0" class="image"><img style="width:512.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/de2bd284-0673-426f-8bb3-dfafcd72ca30/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=3f77e5ebd0e28858c14a69cae7160a51f9aa8d956be980941acd4aac9929be9d&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-807b-a99f-f020d9b2caf9" class="numbered-list" start="2"><li>작은 영역 통합<div style="display:contents" dir="auto"><p id="340924f6-8abb-801a-be20-efd3f774066a" class="">1단계에서 여러 영역으로 나눈 것들을 비슷한 영역으로 통합</p></div><div style="display:contents" dir="auto"><p id="340924f6-8abb-80ba-8f9d-c52a17844086" class="">greedy algorithm 사용해서 한 영역이 하나로 통합될 때 까지 반복</p></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80c1-9623-eac429853342" class="image"><img style="width:584.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/e03bf1b1-48c7-4418-aaeb-9f937507b146/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=8fcff7683499b250a5ae0f937bda11613f069f53d1828a82d7f552c7e636b336&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-8082-b1f9-ffbbed9874cc" class="numbered-list" start="3"><li>후보 영역 생성<div style="display:contents" dir="auto"><p id="340924f6-8abb-8016-9fc3-f123b66a49ee" class="">2단계에서 통합된 이미지를 기반으로 후보 영역(bounding box)추출</p></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-801e-b96e-c489e427342a" class="image"><img style="width:606.9812622070312px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/1a18c214-a4b2-42bf-8e52-87da533f281b/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=882eee0ffbf7bc24d2d9fe69a9e497d6903bddea763625ec2f5f136648b68655&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-80bb-9316-eb098263cd6c" class="">R-CNN</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80b5-b0f7-e5ae9c90a6aa" class="bulleted-list"><li style="list-style-type:disc">Region-based CNN</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8034-b95a-ccd98273775c" class="bulleted-list"><li style="list-style-type:disc">이미지 분류를 수행하는 CNN + 이미지에서 객체가 있을 만한 영역을 제한하는 후보 영역 알고리즘</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8017-899a-c8fcd2bc3fad" class="bulleted-list"><li style="list-style-type:disc">과정<div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-8027-aee7-c027ccb59bca" class="numbered-list" start="1"><li>이미지 입력 받음</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-80aa-b750-fccc7ad0fd88" class="numbered-list" start="2"><li>bounding box 2000개를 선택적 탐색 알고리즘으로 추출 후 cropping, warping(CNN 모델에 넣기 위해 같은 크기로 통일)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-80b7-8e38-e502181da925" class="numbered-list" start="3"><li>크기가 동일한 이미지 2000개에 각각 CNN 모델 적용</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="340924f6-8abb-80e4-8a64-f661df0de7a5" class="numbered-list" start="4"><li>각각 분류 진행 → 결과 도출</li></ol></div></li></ul></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-808a-a925-d3173184344c" class="image"><img style="width:578.9812622070312px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/78608a56-85e2-4cbe-8a98-3db636b7cc9a/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=29fbcfd4ea45acd3efb8b66a6991b545459b08c0df4eddb2cd2824a18b3ed63d&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-806d-8cee-ece5e0ce90eb" class="bulleted-list"><li style="list-style-type:disc">단점<div style="display:contents" dir="auto"><ul id="340924f6-8abb-80ee-940e-fef610eba731" class="bulleted-list"><li style="list-style-type:circle">복잡한 과정</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80cb-bf9e-f49377da4de7" class="bulleted-list"><li style="list-style-type:circle">긴 학습시간</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-807e-9b3d-cdd9d38ede06" class="bulleted-list"><li style="list-style-type:circle">객체 검출 속도 문제</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8058-97ea-c868e258095b" class="bulleted-list"><li style="list-style-type:circle">대용량 저장 공간 필요</li></ul></div><div style="display:contents" dir="auto"><p id="340924f6-8abb-802a-8131-d47a9d9d4e69" class="">⇒ 해결: Fast R-CNN</p></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-80bd-83f1-e8c4ac5a8130" class="">6.2.2 공간 피라미드 풀링</h2></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8037-a749-df25d2cade77" class="">등장 배경</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8055-b1df-ec88d4ddcd65" class="bulleted-list"><li style="list-style-type:disc">기존 CNN 구조는 모두 완전연결층을 위해 입력 이미지 고정이 필요했음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80bc-8d95-cf1ce6b82b94" class="bulleted-list"><li style="list-style-type:disc">신경망 통과하려면 이미지 crop, wrap이 필요했음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80bc-b4c0-c23dd2f3cf0f" class="bulleted-list"><li style="list-style-type:disc">단점: 데이터 손실</li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8081-8f52-c3b4b4b0c932" class="">공간 피라미드 풀링</h3></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-802c-ba79-fa3ad46d627c" class="image"><img style="width:703.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/549b6f51-dd41-41eb-8689-c658d2eeea19/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=06954e730ce0134249372394cd07ccdfb9f5879df83e4b98889fec645a1cc536&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-808c-b460-da2db437731c" class="bulleted-list"><li style="list-style-type:disc">입력 이미지 크기에 관계없이 합성곱층을 통과시킴 ⇒ 원본 이미지 훼손X 특성 맵 얻을 수 있음</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-803f-8c87-c40ac50d8753" class="bulleted-list"><li style="list-style-type:disc">완전 연결층에 전달되기 전에 특성 맵들을 동일한 크기로 조절해주는 풀링층 적용</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-804d-a568-d57615f39acf" class="bulleted-list"><li style="list-style-type:disc">이미지 분류, 객체 인식같은 여러 작업에 적용할 수 있음</li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-809e-b171-ec22563373da" class="">6.2.3 Fast R-CNN</h2></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8086-b3b2-f859375f1b96" class="">R-CNN의 문제</h3></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8082-af1e-fb9b9b4fa18a" class="bulleted-list"><li style="list-style-type:disc">바운딩 박스마다 CNN 돌림</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-805e-9a00-e167d7a8012e" class="bulleted-list"><li style="list-style-type:disc">분류를 위해 긴 학습 시간 필요</li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-807a-82a4-f9564e85713a" class="">Fast R-CNN</h3></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-801a-aaf8-cfcf36dd4050" class="image"><img style="width:679.9812622070312px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/bb9f00f6-2256-414a-b4ad-2d3451d53853/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=f9af2433dbea1a3ab856212749563e02699a991a613a4fc0a3646ae1e619b792&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8082-8809-f0c67fdc40bf" class="bulleted-list"><li style="list-style-type:disc">RoI 풀링 도입 ⇒ 속도 문제 개선</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8009-9b89-daa2554c77b5" class="bulleted-list"><li style="list-style-type:disc">RoI 폴링: 크기가 다른 특성 맵의 영역마다 스트라이드를 다르게 최대 풀링 적용 ⇒ 결과값 크기 동일하게 맞춤</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80f2-8764-c933726f7e99" class="bulleted-list"><li style="list-style-type:disc">선택적 탐색에서 찾은 바운딩 박스 정보가 CNN을 통과하면서 유지됨</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8001-a295-db24b4532df8" class="bulleted-list"><li style="list-style-type:disc">최종 CNN 특성 맵: 풀링 적용 → 완전연결층을 통과하도록 크기 조절</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-809e-a81c-f5f4635efdfd" class="bulleted-list"><li style="list-style-type:disc">바운딩 박스마다 CNN 돌리는 시간 단축 가능!</li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-8081-922d-da7c52e7c32d" class="">6.2.4 Faster R-CNN</h2></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80a5-aa72-e55a25ee631b" class="bulleted-list"><li style="list-style-type:disc">더욱 빠른 객체 인식을 수행하기 위한 네트워크</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-804f-a65a-fa5ac9127f24" class="bulleted-list"><li style="list-style-type:disc">Fast R-CNN에 대한 개선점<div style="display:contents" dir="auto"><ul id="340924f6-8abb-806f-8bd7-c0d7d21553b0" class="bulleted-list"><li style="list-style-type:circle">후보 영역 추출 네트워크 추가 ⇒ 후보 영역 생성을 CNN 내부 네트워크에서 진행</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8005-b4f4-e3ee9235f00e" class="bulleted-list"><li style="list-style-type:circle">RPN(GPU)로 계산</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-804e-bc73-d902412e63dd" class="bulleted-list"><li style="list-style-type:disc">구조<div style="display:contents" dir="ltr"><figure id="340924f6-8abb-80ed-8109-d8bed1104309" class="image"><img style="width:447.9937438964844px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/cde63fd8-b8d5-4aee-bf5c-f26a04210e52/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=b8fe1093866d1cb643a6877cd3cde91f848561d2f6d4fd8670ceacae105fc887&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80ec-a030-d52b0bbb352e" class="bulleted-list"><li style="list-style-type:circle">마지막 합성곱층 다음에 위치</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80b5-aaae-d10273fe958d" class="bulleted-list"><li style="list-style-type:circle">RoI 풀링</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-802e-a0c7-dfd378eacf0e" class="bulleted-list"><li style="list-style-type:circle">분류기(classifier)</li></ul></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80fa-95fd-ef123dd6d83b" class="bulleted-list"><li style="list-style-type:circle">바운딩 박스 회귀(bounding-box regression)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-8084-a3a0-ee0db1df1257" class="">후보 영역 추출 네트워크</h3></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8069-8951-da7503f7d473" class="image"><img style="width:419.9875183105469px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/c7b60678-bac7-437f-ad55-b1d543329e97/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=a9fd3594ae8c740f5ceed859fb338c6ee6efcf9a170558bf6c14aaa1df2e8d89&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8056-a61c-e656789461ab" class="bulleted-list"><li style="list-style-type:disc">이진 분류(binary classification) 수행<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8054-b53d-c5723ff8dd2a" class="bulleted-list"><li style="list-style-type:circle">입력값: 특성 맵 NxN 크기의 작은 윈도우 영역 (고정된 크기 입력만 가능)</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80b4-a715-ef9a3af62854" class="bulleted-list"><li style="list-style-type:circle">출력값: 이진값 (객체 존재 유무 판단)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8060-854d-e180a1b3d5d7" class="bulleted-list"><li style="list-style-type:disc">위치 보정(좌표점 추론)을 위해 bounding box regression을 추가함</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-800e-9041-e62711d2b99e" class="bulleted-list"><li style="list-style-type:disc">슬라이딩 윈도우 방식도 사용</li></ul></div><div style="display:contents" dir="auto"><h3 id="340924f6-8abb-80e0-8973-ea46031f063d" class="">앵커</h3></div><div style="display:contents" dir="ltr"><figure id="340924f6-8abb-8009-803d-fa5ee631e50a" class="image"><img style="width:593.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/9af332ee-6e01-4921-8537-f40413af990f/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=cce035c669585e53f85884aa0500381d9855602b562a677850d4d3b6769253ca&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-800f-9cc9-c47c1eafdc38" class="bulleted-list"><li style="list-style-type:disc">여러 크기와 비율의 reference box <style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span><span>﻿</span></span>개 미리 정의</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80f9-9458-e13b9e8b7b74" class="bulleted-list"><li style="list-style-type:disc">각각의 슬라이딩 윈도우 위치마다 박스 <style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span><span>﻿</span></span>개 출력</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-803b-bae6-ef3d206c4bdd" class="bulleted-list"><li style="list-style-type:disc">출력값<div style="display:contents" dir="auto"><ul id="341924f6-8abb-80c6-911e-ed9d9a6b66e6" class="bulleted-list"><li style="list-style-type:circle"><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">2k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span><span>﻿</span></span>개의 분류: 모든 앵커 위치에 대해 각각 객체와 배경 판단</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8035-9ee4-d9edc256582f" class="bulleted-list"><li style="list-style-type:circle"><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">4k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span><span>﻿</span></span>개의 회귀: <style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>w</mi><mo separator="true">,</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x, y, w, h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">h</span></span></span></span></span><span>﻿</span></span> 위치 보정값</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h1 id="340924f6-8abb-8094-9628-cb88fd9e970f" class="">6.3 이미지 분할을 위한 신경망</h1></div><div style="display:contents" dir="auto"><p id="340924f6-8abb-8095-963f-fa7f5ce29d20" class="">신경망 훈련 시킴 → 이미지를 픽셀 단위로 분할 → 이미지에 포함된 객체 추출</p></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-805a-aeff-c145edd9d721" class="">6.3.1 완전 합성곱 네트워크</h2></div><div style="display:contents" dir="ltr"><figure id="341924f6-8abb-809c-a4b0-ef141072d5dd" class="image"><img style="width:541.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/db6054ef-d934-47cc-a72f-063f1d780e0d/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=f8053e03f1dc4956bb9240c6fad4fb4c1c4a74ae4dc101ef7bf3b860b6a860ea&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8083-9083-f67595dd4c5a" class="bulleted-list"><li style="list-style-type:disc">완전연결층을 1x1 합성곱으로 대체</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8004-b717-e73ca3985a56" class="bulleted-list"><li style="list-style-type:disc">우수한 성능을 보인 CNN 기반 모델(AlexNet, VGG16, GoogLeNet)을 변형시켜 이미지 분할에 적합하도록 만든 네틍뤄크</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8027-9b72-dbe7c22aa51f" class="bulleted-list"><li style="list-style-type:disc">장점: 합성곱층으로 사용됨 → 입력 이미지 크기 제약 사라짐</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-803c-9c71-e9a0af30cabd" class="bulleted-list"><li style="list-style-type:disc">단점<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8059-a64f-d76a57c3699f" class="bulleted-list"><li style="list-style-type:circle">여러 단계의 합성곱층, 풀링층 거침 ⇒ 해상도 저하</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8034-9cfc-f78ed25d0714" class="bulleted-list"><li style="list-style-type:circle">낮아진 해상도 → upsampling 방식으로 복원 ⇒ 이미지의 세부 정보 손실</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-80f2-bf73-d98110048d6c" class="">6.3.2 합성곱 &amp; 역합성곱 네트워크</h2></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-803b-9a1c-ec1fee35fabc" class="bulleted-list"><li style="list-style-type:disc">완전 합성곱 네트워크의 문제점 해결하기 위해 등장</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8062-b5b1-faeda3a38078" class="bulleted-list"><li style="list-style-type:disc">역합성곱 (upsampling)<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-80af-8d9c-fc4c4db27875" class="image"><img style="width:545.7875366210938px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/995f4037-e7ff-4329-932f-e9d3a3d5323e/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=172c01f3ff9506c51a312aec306a7f9b89a289c23e7c24047c09854f7b247d76&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8033-990d-e2be70880dd1" class="bulleted-list"><li style="list-style-type:circle">CNN의 최종 출력 결과를 원래 입력 이미지와 같은 크기로 만들고 싶을 때 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8048-9868-ce8afed659e9" class="bulleted-list"><li style="list-style-type:circle">semantic regression에서 활용됨; 이미지 내에 있는 물체들을 의미있는 단위로 분할하는 것</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8065-9838-e455e8f6377d" class="bulleted-list"><li style="list-style-type:circle">동작 방식<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-803a-b2ac-db90bf8646a0" class="image"><img style="width:280.9750061035156px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/a8492552-6664-45a3-a13e-486e3fa13d6e/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=418b120b798b2279a4e6847299fd2a03880dd0ab6065c28c797b84bd4799ac85&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-80e0-8ec6-d2e9969f9cbb" class="numbered-list" start="1"><li>각각의 픽셀(파란색) 주위에 zero-padding 추가(흰색)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-80ce-a8ca-fa6e78c9b784" class="numbered-list" start="2"><li>1에서 패딩된 것에 합성곱 연산 수행 (회색 ⇒ 초록 출력)</li></ol></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80a3-8193-d4429f34096a" class="bulleted-list"><li style="list-style-type:disc">합성곱</li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-8072-8172-ed13bf5d126a" class="">6.3.3 U-Net</h2></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-80ca-bab3-ccca8ff6972d" class="bulleted-list"><li style="list-style-type:disc">바이오 메디컬 이미지 분할을 위한 합성곱 신경망</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8088-97e3-d848666149a3" class="bulleted-list"><li style="list-style-type:disc">특징<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8094-87ee-d4860acab7fc" class="bulleted-list"><li style="list-style-type:circle">빠른 속도<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-808d-a4b5-cdef1427b977" class="image"><img style="width:507.76251220703125px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/209a3705-d9e2-4396-b2dd-a7e0e9ac5a63/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=9171250970a95b0d5f3a531a7597f0014a7b86cc974ed59f1e28cb1ce5e5a9b0&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80ef-a951-dce3b2cdb418" class="bulleted-list"><li style="list-style-type:square">기존 슬라이딩 윈도우 방식: 이전 patch에서 검증이 끝난 부분을 다음 patch에서 또 검증해서 느렸음</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8054-9300-e5c1f90498a5" class="bulleted-list"><li style="list-style-type:square">U-Net: 이미 검증 끝낸 patch는 건너 </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-801e-a2ab-d4f2f6131f6b" class="bulleted-list"><li style="list-style-type:circle">trade-off에 빠지지 않음<div style="display:contents" dir="auto"><ul id="341924f6-8abb-809e-8b06-e036ab50afc5" class="bulleted-list"><li style="list-style-type:square">일반적으로 패치 크기가 커지면?<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8070-beea-e9daeffe5ff9" class="bulleted-list"><li style="list-style-type:disc">넓은 범위 이미지 인식하는데 뛰어남 </li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8020-a6ff-c5b2e0b7977d" class="bulleted-list"><li style="list-style-type:disc">context 인식에 탁월함</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8013-a95b-c68c19c32ffe" class="bulleted-list"><li style="list-style-type:disc">지역화 한계<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8078-9fde-fe9070f84cab" class="bulleted-list"><li style="list-style-type:circle">넒은 범위를 한번에 인식해서 지역화에 약함</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8044-917e-c579dc028a73" class="bulleted-list"><li style="list-style-type:circle">지역화란? 객체의 위치 정보를 출력해주는 것. 바운딩 박스를 많이 사용함</li></ul></div></li></ul></div></li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8068-8cbb-de9d0c7c5610" class="bulleted-list"><li style="list-style-type:disc">구조<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-8024-9b6b-c9ffd0541f6d" class="image"><img style="width:518.0952380952382px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/0ce38f83-692c-4266-b914-06fce85f3852/42231ca0-5fec-4115-b84f-b6eba08d9c52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=6fc94b383fc82863e25c5bdacd45eaa2ac235435b124eadf0980399194aa738c&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80f5-8292-fa167c3d860c" class="bulleted-list"><li style="list-style-type:circle">FCN 기반으로 구축되었음</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8002-98dd-cb8e7319ec15" class="bulleted-list"><li style="list-style-type:circle">크기가 다양한 이미지의 객체 분할을 위해 크기가 다양한 특성 맵을 병합할 수 있도록 down sampling과 up sampling을 순서대로 반복하는 구조</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80fa-8ed1-cedeae6f4791" class="bulleted-list"><li style="list-style-type:circle">수축 경로 (contracting path)<div style="display:contents" dir="auto"><ul id="341924f6-8abb-8094-b57f-e8ff7dd10351" class="bulleted-list"><li style="list-style-type:square">컨텍스트 포착</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80fb-b91a-d4284baac2c1" class="bulleted-list"><li style="list-style-type:circle">확장 경로 (expansive path)<div style="display:contents" dir="auto"><ul id="341924f6-8abb-803a-8390-c5de32a559fb" class="bulleted-list"><li style="list-style-type:square">특성 맵을 upsampling</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-809f-9a2d-de2f0242fc95" class="bulleted-list"><li style="list-style-type:square">수축 경로에서 포착된 특성 맵의 컨텍스트와 결합 ⇒ 정확한 지역화 수행</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80ff-af50-f78da6363127" class="bulleted-list"><li style="list-style-type:circle">합성곱<div style="display:contents" dir="auto"><ul id="341924f6-8abb-801c-87b3-e0e12edbdd5f" class="bulleted-list"><li style="list-style-type:square">3x3 합성곱 두 개</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-804f-ac77-f2f0c775eadb" class="bulleted-list"><li style="list-style-type:square">그 사이에 드롭아웃(dropout)</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80b6-8c8d-efa1addcd01a" class="bulleted-list"><li style="list-style-type:square">각 블록은 최대 풀링(maxpooling) 이용해서 크기를 줄여서 다음 블록으로 넘어감</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8006-9a7c-f2430d2d93e2" class="bulleted-list"><li style="list-style-type:square"><code>up-conv</code> : 수축 과정에서 줄어든 크기를 다시 키워서 합성곱 블록 이용</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-8008-b311-c5f987199be0" class="">6.3.4 PSPNet</h2></div><div style="display:contents" dir="auto"><ul id="340924f6-8abb-8042-ace3-eb095633d058" class="bulleted-list"><li style="list-style-type:disc">시맨틱 분할 알고리즘 (semantic segmentation)</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-802f-8e2a-efc32767e8d2" class="bulleted-list"><li style="list-style-type:disc">완전 연결층의 한계를 극복하기 위해 피라미드 풀링 모듈을 추가함</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80af-b595-e9d775b5beb1" class="bulleted-list"><li style="list-style-type:disc">훈련 과정<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-8005-ba6f-ef3c3c149e15" class="image"><img style="width:665.9874877929688px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/8cd77f61-80cc-4ca5-9ab8-4f0d2ba5701b/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=3c6384bd5e0e004a5908ff14df467d06d8b2a93d3159cf8f27525e500b840583&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-8054-9846-eeecabc3d2bd" class="numbered-list" start="1"><li>이미지 출력이 서로 다른 크기가 되도록 여러 차례 풀링<div style="display:contents" dir="auto"><p id="341924f6-8abb-8061-bb9f-ee63f21f21c8" class="">1 x 1, 2 x 2, 3 x 3, 6 x 6 크기로 풀링 수행</p></div><div style="display:contents" dir="auto"><p id="341924f6-8abb-8071-ad4b-c6d6033e6621" class="">1 x 1 특성 맵에 가장 광범위한 정보 담음</p></div><div style="display:contents" dir="auto"><p id="341924f6-8abb-80a0-8445-f948868ae0f7" class="">다른 크기의 특성 맵은 서로 다른 영역들의 정보를 담음</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-80b3-9488-efbc3eaa8f92" class="numbered-list" start="2"><li>1 x 1 합성곱을 사용해 채널 수 조정<div style="display:contents" dir="auto"><p id="341924f6-8abb-809b-b01b-c01d92ce2b68" class="">풀링층 개수 = N, 출력 채널 수 = 입력 채널 수 / N</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-80ce-8cf3-ea77320283a8" class="numbered-list" start="3"><li>모듈 입력 크기에 맞게 특성 맵을 업 샘플링<div style="display:contents" dir="auto"><p id="341924f6-8abb-80eb-87ba-c3e3ba8a8465" class="">bilinear interpolation(양산형 보간법) 사용</p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="341924f6-8abb-8062-86c1-f74bced426d6" class="numbered-list" start="4"><li>원래의 특성맵고 1~3과정에서 생성한 새로운 특성 맵들을 병합</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h4 id="341924f6-8abb-80ef-81d1-c5cc0763c545" class="">Interpolation (보간법)</h4></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80db-b141-df03a4f47fe6" class="bulleted-list"><li style="list-style-type:disc">빈 화소에 값을 할당 ⇒ 좋은 품질의 영상을 만드는 방법</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80da-a18a-e5c8f3a6ee57" class="bulleted-list"><li style="list-style-type:disc">선형 보간법 (linear interpolation): 원시 영상의 화소 값 두개 사용 ⇒ 원하는 좌표에서 새로운 화소 값을 계산</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8013-940f-ce7f7ebff6fb" class="bulleted-list"><li style="list-style-type:disc">양선형 보간법(bilinear interpoliation): 화소당 선형 보간을 3번 수행 ⇒ 새롭게 생성된 화소는 가장 가까운 화소 4개에 가중치를 곱한 값을 합해서 얻음</li></ul></div><div style="display:contents" dir="ltr"><figure id="341924f6-8abb-80e6-83a5-fbfe9f76518b" class="image"><img style="width:703.9937744140625px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/e04ac182-46e4-4ee1-a63a-55fa4c91e6ec/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=330be5876be82e01babde37ad43ee53cdcb655d78f5e109ab495b813b89d6bd0&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><h2 id="340924f6-8abb-802d-a93e-ec8b87466bc2" class="">6.3.5 DeepLabv3/DeepLabv3+</h2></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80dc-814f-f817b0628cc9" class="bulleted-list"><li style="list-style-type:disc">완전연결층의 단점을 보완하기 위해 Atrous 합성곱 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8054-809d-eb504efd9585" class="bulleted-list"><li style="list-style-type:disc">구조<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-8023-9fc7-d412c3c39f48" class="image"><img style="width:315.9937438964844px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/2feaba50-cef4-4f1d-9d7a-97a186978c89/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=00a9b8d92b02d5833c63e42c4202a4dd417f1508c2526ab5a7d85a4784380518&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-803e-9e92-cd92a4c160c3" class="bulleted-list"><li style="list-style-type:circle">인코더</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8070-bf81-de31733f66dc" class="bulleted-list"><li style="list-style-type:circle">디코더</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80fe-a033-d1373cf7fb50" class="bulleted-list"><li style="list-style-type:circle">일반적 인코더-디코더 구조에서는 불가능한 <mark class="highlight-yellow_background">인코더에서 추출된 특성 맵의 해상도를 Atrous 합성곱을 도입해서 제어 가능</mark></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80b9-95e4-cee454b01e0b" class="bulleted-list"><li style="list-style-type:disc">필터 내부에 빈공간 있음<div style="display:contents" dir="ltr"><figure id="341924f6-8abb-8048-95ed-d431b57d9b22" class="image"><img style="width:315.9875183105469px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/537d3017-17de-45a4-a084-cff2250b1492/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=20ce6ab6469fa4aa476aca1ca603279fbe51e0887792f20ab81a407b092d4165&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-802c-815c-ffeed2492747" class="bulleted-list"><li style="list-style-type:circle">rate: 빈공간 결정 <div style="display:contents" dir="auto"><ul id="341924f6-8abb-805c-be97-dee8a994eb93" class="bulleted-list"><li style="list-style-type:square">rate r = 1: 기존 합성곱과 동일하게 빈공간 가짐</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-8093-942b-fa31e0df9bf2" class="bulleted-list"><li style="list-style-type:square">r이 커질수록 빈 공간 많아짐</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-805d-b10b-e9f7a1e6f7bc" class="bulleted-list"><li style="list-style-type:disc">수용 영역(receptive field)<div style="display:contents" dir="auto"><ul id="341924f6-8abb-802c-8d64-f495160fab47" class="bulleted-list"><li style="list-style-type:circle">외부 자극이 전체에 영향을 주는게 아니라 특정 영역에만 영향을 줌</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-801a-a1b6-f313222ae9fa" class="bulleted-list"><li style="list-style-type:circle">영상의 특정 범위를 한정해서 처리 </li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-80ae-89e4-ca8422080116" class="bulleted-list"><li style="list-style-type:circle">이미지 분할에서 높은 성능 내려면 수용 영역 크기가 중요함</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-809a-b647-d07455bb2bfd" class="bulleted-list"><li style="list-style-type:circle">수용 영역 확대 → 특성 찾는 범위 커짐</li></ul></div><div style="display:contents" dir="auto"><ul id="341924f6-8abb-806b-b5df-c8573b3c4584" class="bulleted-list"><li style="list-style-type:circle">Atrous 합성곱 활용하면 파라미터 수 늘리지 않고 수용 영역 키울 수 있음</li></ul></div><div style="display:contents" dir="ltr"><figure id="341924f6-8abb-8010-a4d2-feaa912d404f" class="image"><img style="width:1176px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/df75b261-8887-4f5d-af69-bf4f5296a6fb/2fc83059-c401-4ae3-949c-3e4b63b2aca3/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QUSBZFGW%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T112906Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIDNsaiCMF%2Fyxv3VrARwFDQx8U5nOJFKi8TXlbWWe9OSrAiAIDja8606aKyHM5SHcqGESFf5kQpLdtC8xx8ZNuv9PPSr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMg2KNvBz3RQV56lgmKtwDJRhMZKT3LoJeNRnhrkwAoAYPohKZ140R7EypMaau4S7Wus42jNMlj1f64ohqBi4B4a2j%2Fqi8JN9dNIhJUmir%2BOuIkllNdwBIexyIfMcXNXSwgpm61R09uA3O7Jz6gY8CN6tFr8tGA45bLcHddlFyre8XIQ3bXB3NMmSiC9XqU%2BiLnjDcMWcTp28r4vJORAQYC%2BSYvsFL2Fm6HKc8VXwGV5iV8tiwU8QYbsjzVP3521JKQlC0kGCamUOn2u627soELojOPg0xolyz4ixpb6UVTUtRFZdj6ps2WsMlhIn3EsKTB4WL14zrk6bWsrVO8gnSsYr9WdSMw6vSCaJjM2K3A3QDmb6sxuZXN3IfRsBLsSeV2xHN9AOcwEjbqLDCq2Pqk3FlsoqEzRKOWJrxnMna%2BymHjhSMCfv4lAE5U3vy9bccrk3E0hXuffauPR35w%2BltaPK%2Fwgx2jvnbJqKmfXEWkcmRdsA1ty9vJR49g8dk0zNVK%2FAyBmaVk9gWKonAQw6%2BkaVy1X4h1Zt37QYLQG5152QGJ8aIflMO2JaHzw%2FWG8PgH2kEucC19nRDPfJh5r0RHGk8E1Fx%2FZqDTBJyCyWzdBYRCk%2FBU31qtVXlFbUQO60kc9xZkce%2Fj8WsSf0w64PzzgY6pgEg9cLYF3VweqjgVsNCb4SkWuuWg%2B%2FQePI68%2Fgsmu1lBBWav%2FPcOjFEAV99sMB403l52YH8ECTK2kA9J76BuKCaJk%2B0rsuMbvU%2Bs5JH4r9%2BBnJ298l0t3Dxl6qyBJrEqhAs3BLD2fR21w5G6%2BaJ%2F7roENprYOobZyl%2F6g2THnj9ad8Q3arGN8qGOQ9SwBiNw%2BG0i0x3QLek83KAAZtCwpq11ZHPGcko&amp;X-Amz-Signature=1203794fbaa5556155a6231565cd7015514ae1f6d9bdff8e86b01b76852e0acd&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div><div style="display:contents" dir="auto"><p id="341924f6-8abb-80a1-9898-db9dc6a66730" class="">일반적인 CNN 적용: 출력 = 입력 * 1/32</p></div><div style="display:contents" dir="auto"><p id="341924f6-8abb-8092-bb5e-d39cd269b9a9" class="">Atrous 합성곱 적용: 출력 = 입력 * 1/8</p></div><div style="display:contents" dir="auto"><p id="341924f6-8abb-8053-8d46-ea2d54f504bc" class="">⇒ 특성 맵 크기가 기존 대비 4배 보존됨</p></div></li></ul></div></div></article></body></html>
